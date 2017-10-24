@@ -20,6 +20,12 @@
 #import "RCTTextView.h"
 #endif
 
+#if __has_include(<React/RCTUITextView.h>)
+#import <React/RCTUITextView.h>
+#else
+#import "RCTUITextView.h"
+#endif
+
 #if __has_include(<React/RCTTextField.h>)
 #import <React/RCTTextField.h>
 #else
@@ -175,7 +181,7 @@ RCT_EXPORT_METHOD(presentCustomInputComponent:(nonnull NSNumber*)inputFieldTag p
 
         if ([inputField isKindOfClass:[RCTTextView class]])
         {
-            UITextView *textView = [inputField valueForKey:@"_textView"];
+            UITextView *textView = (RCTUITextView*)[(RCTTextView*)inputField backedTextInputView];
             if (textView != nil)
             {
                 helperView.inputAccessoryView = textView.inputAccessoryView;
