@@ -23,12 +23,14 @@ export default class KeyboardAccessoryView extends Component {
     revealKeyboardInteractive: PropTypes.bool,
     manageScrollView: PropTypes.bool,
     requiresSameParentToManageScrollView: PropTypes.bool,
+    dynamicBottomPadding: PropTypes.number,
   };
   static defaultProps = {
     iOSScrollBehavior: -1,
     revealKeyboardInteractive: false,
     manageScrollView: true,
     requiresSameParentToManageScrollView: false,
+    dynamicBottomPadding: 0,
   };
 
   constructor(props) {
@@ -118,6 +120,7 @@ export default class KeyboardAccessoryView extends Component {
         revealKeyboardInteractive={this.props.revealKeyboardInteractive}
         manageScrollView={this.props.manageScrollView}
         requiresSameParentToManageScrollView={this.props.requiresSameParentToManageScrollView}
+        dynamicBottomPadding={this.props.dynamicBottomPadding}
       >
         {this.props.renderContent && this.props.renderContent()}
         <CustomKeyboardView
